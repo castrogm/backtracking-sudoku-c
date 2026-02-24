@@ -1,0 +1,11 @@
+# Compiled files and build directories
+*.o
+obj/
+
+# Executables
+sudoku_solver
+sudoku_solver.exe
+
+# OS and editor files
+.DS_Store
+.vscode/
