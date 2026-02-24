@@ -33,7 +33,7 @@ Execute the generated file:
 To remove object files and the executable, run:
 `make clean`
 
-## 🎮 Usage
+## Usage
 The program will prompt you to type the 9 characters for each row.
 - Input numbers from `1` to `9`.
 - Use a dot `.` to represent an empty cell.
