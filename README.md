@@ -44,5 +44,3 @@ Run the program and choose your preferred input mode:
 2. **File input**: The program will automatically read the grid from `data/sudokuin.txt`.
 
 After solving, the program displays performance metrics (time spent, backtracks, and recursive calls) and offers the option to save the solved grid to `data/sudokuout.txt`.
-
-**Example input for a row:** `53..7....`
