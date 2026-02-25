@@ -11,7 +11,7 @@ void printMatrix(int matrix[SIZE][SIZE])
         {
             if (j % 3 == 0 && j != 0)
                 printf("| ");
-            if (matrix[i][j] == 0)
+            else if (matrix[i][j] == 0)
                 printf(". ");
             else
                 printf("%d ", matrix[i][j]);
@@ -20,7 +20,7 @@ void printMatrix(int matrix[SIZE][SIZE])
     }
 }
 
-void readMatrix(int matrix[SIZE][SIZE])
+void readManualMatrix(int matrix[SIZE][SIZE])
 {
     char buffer[SIZE + 1]; // +1 for null terminator
     for (int i = 0; i < SIZE; i++)
@@ -30,13 +30,9 @@ void readMatrix(int matrix[SIZE][SIZE])
         for (int j = 0; j < SIZE; j++)
         {
             if (buffer[j] == '.')
-            {
                 matrix[i][j] = 0;
-            }
             else
-            {
                 matrix[i][j] = buffer[j] - '0';
-            }
         }
     }
 }

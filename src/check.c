@@ -42,19 +42,43 @@ int checkSubMatrix(int matrix[SIZE][SIZE], int line, int column, int num)
     return 0;
 }
 
-int lookForEmptyCell(int matrix[SIZE][SIZE], int *line, int *column)
+int lookForBestEmptyCell(int matrix[SIZE][SIZE], int *line, int *column)
 {
+    int minOptions = SIZE + 1; // More than the maximum possible options (1-9)
+    int bestLine = -1;
+    int bestColumn = -1;
+
     for (int i = 0; i < SIZE; i++)
     {
         for (int j = 0; j < SIZE; j++)
         {
             if (matrix[i][j] == 0)
             {
-                *line = i;
-                *column = j;
-                return 1;
+                int optionsCount = 0;
+                for (int num = 1; num <= SIZE; num++)
+                {
+                    if (!checkLine(matrix, i, num) &&
+                        !checkColumn(matrix, j, num) &&
+                        !checkSubMatrix(matrix, i, j, num))
+                    {
+                        optionsCount++;
+                    }
+                }
+                if (optionsCount < minOptions) // Found a cell with fewer options
+                {
+                    minOptions = optionsCount;
+                    bestLine = i;
+                    bestColumn = j;
+                }
             }
         }
+    }
+
+    if (bestLine != -1 && bestColumn != -1)
+    {
+        *line = bestLine;
+        *column = bestColumn;
+        return 1;
     } // else
-    return 0;
+    return 0; // No empty cell found
 }

@@ -1,3 +1,6 @@
+#ifndef CHECK_H
+#define CHECK_H
+
 #include "settings.h"
 
 int checkLine(int matrix[SIZE][SIZE], int line, int num);
@@ -13,6 +16,10 @@ int checkSubMatrix(int matrix[SIZE][SIZE], int line, int column, int num);
 // already present in the 3x3 submatrix that contains the cell at the
 // given line and column coordinates.
 
-int lookForEmptyCell(int matrix[SIZE][SIZE], int *line, int *column);
-// Returns 1 if an empty cell is found in the matrix, 0 otherwise.
+int lookForBestEmptyCell(int matrix[SIZE][SIZE], int *line, int *column);
+// Boolean function that searches for the empty cell with the fewest possible
+// valid numbers in the sudouku matrix.
 // If an empty cell is found, the line and column coordinates are returned through pointers.
+// The function helps optimizing the backtracking algorithm by prioritizing cells that are more constrained.
+
+#endif // CHECK_H

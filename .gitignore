@@ -9,3 +9,6 @@ sudoku_solver.exe
 # OS and editor files
 .DS_Store
 .vscode/
+
+# Output files
+data/sudokuout.txt
