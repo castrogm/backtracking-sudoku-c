@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "settings.h"
+#include <string.h>
 
 void printMatrix(int matrix[SIZE][SIZE])
 {
@@ -25,8 +26,18 @@ void readManualMatrix(int matrix[SIZE][SIZE])
     char buffer[SIZE + 1]; // +1 for null terminator
     for (int i = 0; i < SIZE; i++)
     {
-        printf("Digite os caracteres da linha %d: ", i + 1);
-        scanf("%s", buffer);
+        printf("Enter line %d: ", i + 1);
+        do
+        {
+            scanf(" %s", buffer);
+            if (strlen(buffer) != SIZE)
+            {
+                printf("Invalid input. Please enter exactly %d characters (digits or '.').\n", SIZE);
+                continue; // Validate input length
+            }
+            // else
+            break;
+        } while (1);
         for (int j = 0; j < SIZE; j++)
         {
             if (buffer[j] == '.')

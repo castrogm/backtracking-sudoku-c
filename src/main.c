@@ -33,9 +33,15 @@ int main()
             return 1;
         }
         else
+        {
+            if (isValidFileMatrix(matrix))
+            {
+                printf("Matrix is not valid.\n");
+                return 1;
+            } // If the matrix is valid, it will continue to solve it
             printf("Matrix read from file successfully.\n");
+        }
     }
-
     printf("Sudoku Matrix:\n");
     printMatrix(matrix);
 

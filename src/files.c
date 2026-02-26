@@ -8,16 +8,21 @@ int readFileMatrix(int matrix[SIZE][SIZE])
         return 1; // Error opening file
 
     // else
+    char buffer[SIZE + 1]; // +1 for null terminator
     for (int i = 0; i < SIZE; i++)
     {
+        fscanf(file, " %s", buffer);
+        if (strlen(buffer) != SIZE)
+        {
+            fclose(file);
+            return 1; // Invalid input length
+        }
         for (int j = 0; j < SIZE; j++)
         {
-            char c;
-            fscanf(file, " %c", &c);
-            if (c == '.')
+            if (buffer[j] == '.')
                 matrix[i][j] = 0;
             else
-                matrix[i][j] = c - '0';
+                matrix[i][j] = buffer[j] - '0';
         }
     }
 
