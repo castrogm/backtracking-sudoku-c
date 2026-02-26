@@ -16,7 +16,7 @@ int main()
     do
     {
         printf("Enter your choice: ");
-        scanf("%c", &mode); // Reads the user's choice for input mode
+        scanf(" %c", &mode); // Reads the user's choice for input mode
         if (mode != '1' && mode != '2')
         {
             printf("Invalid choice. Please enter 1 or 2.\n");
@@ -31,15 +31,6 @@ int main()
         {
             printf("Error reading file.\n");
             return 1;
-        }
-        else
-        {
-            if (isValidFileMatrix(matrix))
-            {
-                printf("Matrix is not valid.\n");
-                return 1;
-            } // If the matrix is valid, it will continue to solve it
-            printf("Matrix read from file successfully.\n");
         }
     }
     printf("Sudoku Matrix:\n");

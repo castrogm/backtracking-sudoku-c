@@ -1,5 +1,6 @@
-#include "settings.h"
 #include <stdio.h>
+#include "settings.h"
+#include "validator.h"
 
 int readFileMatrix(int matrix[SIZE][SIZE])
 {
@@ -12,11 +13,12 @@ int readFileMatrix(int matrix[SIZE][SIZE])
     for (int i = 0; i < SIZE; i++)
     {
         fscanf(file, " %s", buffer);
-        if (strlen(buffer) != SIZE)
+        if (!isValidLine(buffer))
         {
             fclose(file);
-            return 1; // Invalid input length
+            return 1; // Invalid line in file
         }
+
         for (int j = 0; j < SIZE; j++)
         {
             if (buffer[j] == '.')
@@ -38,12 +40,10 @@ int writeFileMatrix(int matrix[SIZE][SIZE])
     // else
     for (int i = 0; i < SIZE; i++)
     {
-        if (i % 3 == 0 && i != 0)
-            fprintf(file, "------+-------+------\n");
         for (int j = 0; j < SIZE; j++)
         {
-            if (j % 3 == 0 && j != 0)
-                fprintf(file, "| ");
+            if (matrix[i][j] == 0)
+                fprintf(file, ". ");
             else
                 fprintf(file, "%d ", matrix[i][j]);
         }
